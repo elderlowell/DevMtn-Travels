@@ -44,7 +44,7 @@ angular.module('devmtnTravel').service('mainSrv', function(){
 				id: 9309,
 				price: 1345.35
 			},{
-				city: "San Fransisco",
+				city: "San Francisco",
 				country: "United States",
 				image: "../img/SFBridge.jpg",
 				desc: "San Francisco is known for its year-round fog, iconic Golden Gate Bridge, cable cars and colorful Victorian houses. In the bay sits Alcatraz Island, site of the notorious former prison.",
@@ -80,4 +80,23 @@ angular.module('devmtnTravel').service('mainSrv', function(){
 				price: 1722.12
 			},
 		]
-})
+    this.getCountryInfo = function(country) {
+      var countryArr = [];
+      for (var i = 0; i < this.packageInfo.length; i++) {
+        if (this.packageInfo[i].country === country) {
+          countryArr.push(this.packageInfo[i]);
+        };
+      }
+      return countryArr;
+    };
+
+    this.getCityInfo = function(id) {
+      var cityObj = {};
+      for (var j = 0; j < this.packageInfo.length; j++) {
+        if (this.packageInfo[j].id === parseInt(id)) {
+          cityObj = this.packageInfo[j];
+        };
+      }
+      return cityObj;
+    };
+});
